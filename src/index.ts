@@ -1,12 +1,35 @@
-import { Command } from 'commander';
-import setupCommands from './commands';
+import { parse } from 'react-docgen-typescript';
 
-const program = new Command();
+const [filePath] = process.argv.slice(2);
 
-program
-  .version('0.0.1')
-  .description('My CLI Tool');
+/**
+ *
+ * @returns string
+ * ex: name: {{dummy data with type of string}},
+ *     \n onlick: {{dummy data with type of () => void}}
+ */
+export function getProps(path: string) {
+	const options = {
+		savePropValueAsString: true,
+	};
 
-setupCommands(program);
+	const [component] = parse(path, options);
 
-program.parse(process.argv);
+	const props = component.props;
+	const propsKeys = Object.keys(props);
+	const propsValues = Object.values(props);
+
+	let description = [];
+	for (const index in propsKeys) {
+		const value = propsValues[index];
+		if (value.required) {
+			description.push(
+				`${propsKeys[index]}: {{dummy data with type of ${value.type.name}}},`
+			);
+		}
+	}
+
+	return description.join('\n');
+}
+
+console.log(getProps(filePath));
