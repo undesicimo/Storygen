@@ -1,14 +1,13 @@
 import { Get } from './get';
-import { getProps } from './utils/get/getProps';
-import { isPathADirPath } from './utils/is/isPathADirPath';
+import { Is } from './is';
 
 const [pathArgs] = process.argv.slice(2);
 
 function run() {
-	if (isPathADirPath(pathArgs)) {
+	if (Is.pathADirPath(pathArgs)) {
 		const filePaths = Get.allFilePathsFromDirPath(pathArgs);
 		for (let i = 0; i < filePaths.length; i++) {
-			getProps(filePaths[i]);
+			Get.props(filePaths[i]);
 		}
 	} else {
 	}
