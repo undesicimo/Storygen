@@ -13,4 +13,4 @@ function run() {
 	}
 }
 
-// console.log(getProps(filePath));
+console.log(Get.props(pathArgs));
