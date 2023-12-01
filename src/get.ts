@@ -3,6 +3,9 @@ import fs from 'fs';
 import path from 'path';
 
 export class Get {
+	static componentSignatures(path: string) {
+		return parse(path, {});
+	}
 	static props(path: string) {
 		const [component] = parse(path, { savePropValueAsString: true });
 
@@ -37,5 +40,9 @@ export class Get {
 		return filePaths;
 	}
 
-	static componentName() {}
+	static componentName(path: string) {
+		const [component] = parse(path, { savePropValueAsString: true });
+
+		return component.displayName;
+	}
 }
