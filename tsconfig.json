@@ -8,5 +8,14 @@
 		"forceConsistentCasingInFileNames": true
 	},
 	"include": ["src/**/*.ts"],
-	"exclude": ["node_modules", "**/*.test.ts", "src/__testfixtures__"]
+	"exclude": [
+		"node_modules",
+		"**/*.test.ts",
+		"src/__testfixtures__",
+		"src/__tests__",
+		"**/*.stories.tsx",
+		"**/*.stories.jsx",
+		"**/*.stories.ts",
+		"**/*.stories.js"
+	]
 }
