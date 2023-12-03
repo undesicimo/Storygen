@@ -1,3 +1,36 @@
+type ComponentElements = {
+	componentName: string;
+	componentPath: string;
+	args: {
+		[key: string]: any;
+	};
+};
+
 export class Generate {
-	static storybookTemplate() {}
+	static storybookTemplate({
+		componentName,
+		componentPath,
+		args,
+	}: ComponentElements) {
+		return `
+		import { StoryObj, Meta } from '@storybook/react';
+
+		import ${componentName} from '${componentPath}';
+
+		export default {
+			title: '${componentPath}',
+			component: ${componentName},
+			args:{
+				${args}
+			}
+		} as Meta<typeof ${componentName}>;
+
+		type Story = StoryObj<typeof ${componentName}>;
+
+		export const Default: Story = {
+			args: {
+			},
+		};
+		`;
+	}
 }
