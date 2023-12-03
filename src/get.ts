@@ -1,4 +1,4 @@
-import { parse } from 'react-docgen';
+import { Documentation, parse } from 'react-docgen';
 import fs from 'fs';
 import path from 'path';
 
@@ -6,9 +6,15 @@ export class Get {
 	static componentSignatures(componentContents: Buffer) {
 		return parse(componentContents, {});
 	}
-	static props(componentContents: Buffer) {
+	static props(componentContents: Buffer): Documentation[] {
 		const components = parse(componentContents);
 		return components;
+	}
+
+	static componentName(path: Buffer) {
+		const [component] = parse(path);
+
+		return component.displayName;
 	}
 
 	static allFilePathsFromDirPath(dirPath: string): string[] {
@@ -24,11 +30,5 @@ export class Get {
 			}
 		}
 		return filePaths;
-	}
-
-	static componentName(path: string) {
-		const [component] = parse(path);
-
-		return component.displayName;
 	}
 }
