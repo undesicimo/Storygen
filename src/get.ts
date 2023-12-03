@@ -31,9 +31,16 @@ export class Get {
 		}
 		return filePaths;
 	}
+	static fileName(filePath: string) {
+		return path.basename(filePath);
+	}
 
 	static fileNameWithoutExtension(filePath: string) {
 		const fileName = path.basename(filePath);
 		return fileName.split('.')[0];
+	}
+
+	static filePathWithoutFileName(filePath: string) {
+		return path.dirname(filePath);
 	}
 }
