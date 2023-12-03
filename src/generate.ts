@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { Get } from './get.js';
 
 type ComponentElements = {
 	componentName: string;
@@ -38,10 +39,10 @@ export class Generate {
 
 	static story({
 		contents,
-		fileDescriptor,
+		storyFileDescriptor: fileDescriptor,
 	}: {
 		contents: string;
-		fileDescriptor: string;
+		storyFileDescriptor: string;
 	}) {
 		fs.writeFile(fileDescriptor, contents, 'utf8', err => {
 			if (err) {
@@ -50,5 +51,11 @@ export class Generate {
 			}
 			console.log('Storybook file generated!');
 		});
+	}
+
+	static storyFileDescriptorFromPath(path: string) {
+		return `${Get.filePathWithoutFileName(path)}/${
+			Get.fileNameWithoutExtension(path) + '.stories.tsx'
+		}`;
 	}
 }
