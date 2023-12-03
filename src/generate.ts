@@ -36,9 +36,18 @@ export class Generate {
 		`;
 	}
 
-	static story({ contents, filePath }: { contents: string; filePath: string }) {
-		fs.writeFile(filePath, contents, 'utf8', err => {
-			if (err) throw err;
+	static story({
+		contents,
+		fileDescriptor,
+	}: {
+		contents: string;
+		fileDescriptor: string;
+	}) {
+		fs.writeFile(fileDescriptor, contents, 'utf8', err => {
+			if (err) {
+				console.error(err, 'Error generating storybook file');
+				throw err;
+			}
 			console.log('Storybook file generated!');
 		});
 	}
