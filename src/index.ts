@@ -7,9 +7,7 @@ const [pathArgs] = process.argv.slice(2);
 function run() {
 	if (Is.pathADirPath(pathArgs)) {
 		const filePaths = Get.allFilePathsFromDirPath(pathArgs);
-		for (let i = 0; i < filePaths.length; i++) {
-			Get.props(filePaths[i]);
-		}
+		for (let i = 0; i < filePaths.length; i++) {}
 	} else {
 	}
 }

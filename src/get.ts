@@ -3,10 +3,10 @@ import fs from 'fs';
 import path from 'path';
 
 export class Get {
-	static componentSignatures(path: string) {
-		return parse(path, {});
+	static componentSignatures(componentContents: Buffer) {
+		return parse(componentContents, {});
 	}
-	static props(componentContents: string) {
+	static props(componentContents: Buffer) {
 		const components = parse(componentContents);
 		return components;
 	}
