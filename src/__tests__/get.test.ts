@@ -1,10 +1,9 @@
-import { Get } from '../get';
-
-const dirPath = 'src/__testfixtures__/';
-const withPropsComponentPath =
-	'src/__testfixtures__/TestComponentWithProps.tsx';
-const withoutPropsComponentPath =
-	'src/__testfixtures__/TestComponentWithoutProps.tsx';
+import { Get } from '../get.js';
+import {
+	dirPath,
+	withPropsComponentPath,
+	withoutPropsComponentPath,
+} from './conts';
 
 describe('Get', () => {
 	describe('allFilePathsFromDirPath', () => {
@@ -18,6 +17,22 @@ describe('Get', () => {
 			expect(result).toContainEqual(
 				'src/__testfixtures__/TestComponentWithoutProps.tsx'
 			);
+		});
+	});
+
+	describe('props', () => {
+		it('should get props of a component', () => {
+			// Act
+			const result =
+				Get.props(`export default function TestComponentWithoutProps() {
+        return (
+                <>
+                        <div>TestComponentWithoutProps</div>
+                </>
+        );
+    }`);
+			// Assert
+			console.log(result);
 		});
 	});
 	describe('componentName', () => {

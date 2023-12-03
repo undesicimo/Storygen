@@ -5,4 +5,11 @@ type P = {
 	description?: string;
 };
 
-export default function TestComponent(props: P) {}
+export default function TestComponent(props: P) {
+	return (
+		<div>
+			test
+			<h1>title</h1>
+		</div>
+	);
+}

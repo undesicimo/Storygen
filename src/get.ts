@@ -1,4 +1,4 @@
-import { parse } from 'react-docgen-typescript';
+import { parse } from 'react-docgen';
 import fs from 'fs';
 import path from 'path';
 
@@ -6,23 +6,9 @@ export class Get {
 	static componentSignatures(path: string) {
 		return parse(path, {});
 	}
-	static props(path: string) {
-		const [component] = parse(path, { savePropValueAsString: true });
-
-		const propsKeys = Object.keys(component.props);
-		const propsValues = Object.values(component.props);
-
-		let description = [];
-		for (const index in propsKeys) {
-			const value = propsValues[index];
-			if (value.required) {
-				description.push(
-					`${propsKeys[index]}: {{dummy data with type of ${value.type.name}}},`
-				);
-			}
-		}
-
-		return description.join('\n');
+	static props(componentContents: string) {
+		const components = parse(componentContents);
+		return components;
 	}
 
 	static allFilePathsFromDirPath(dirPath: string): string[] {
@@ -41,7 +27,7 @@ export class Get {
 	}
 
 	static componentName(path: string) {
-		const [component] = parse(path, { savePropValueAsString: true });
+		const [component] = parse(path);
 
 		return component.displayName;
 	}

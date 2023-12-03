@@ -1,5 +1,6 @@
-import { Get } from './get';
-import { Is } from './is';
+import { Get } from './get.js';
+import { Is } from './is.js';
+import { Parse } from './parse.js';
 
 const [pathArgs] = process.argv.slice(2);
 
@@ -13,4 +14,4 @@ function run() {
 	}
 }
 
-console.log(Get.props(pathArgs));
+console.log(Get.props(Parse.reactComponent(pathArgs)));
