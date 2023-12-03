@@ -15,7 +15,7 @@ function run() {
 		componentName:
 			componentDocumentation.displayName ??
 			Get.fileNameWithoutExtension(pathArgs),
-		componentPath: `./${Get.fileName(pathArgs)}`,
+		componentPath: `./${Get.fileNameWithoutExtension(pathArgs)}`,
 	});
 
 	Generate.story({
