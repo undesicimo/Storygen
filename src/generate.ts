@@ -17,26 +17,24 @@ export class Generate {
 		componentPath,
 		args,
 	}: ComponentElements) {
-		return `
-		import { StoryObj, Meta } from '@storybook/react';
+		return `import {StoryObj, Meta} from '@storybook/react';
 
-		import ${componentName} from '${componentPath}';
+import ${componentName} from '${componentPath}';
 
-		export default {
-			title: '${componentPath}',
-			component: ${componentName},
-			args:{
-				${args ?? '//TODO: Add args here'}
-			}
-		} as Meta<typeof ${componentName}>;
+export default {
+  title: '${componentPath}',
+  component: ${componentName},
+  args: {
+    ${args ?? '//TODO: Add args here'}
+  },
+} as Meta<typeof ${componentName}>;
 
-		type Story = StoryObj<typeof ${componentName}>;
+type Story = StoryObj<typeof ${componentName}>;
 
-		export const Default: Story = {
-			args: {
-			},
-		};
-		`;
+export const Default: Story = {
+  args: {},
+};
+`;
 	}
 
 	static story({
