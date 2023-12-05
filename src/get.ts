@@ -7,9 +7,11 @@ const babelOptions = {
 };
 
 export class Get {
-	static componentSignatures(componentContents: Buffer) {
+	static componentSignatures(componentContents: Buffer, filename?: string) {
 		return get(componentContents, {
 			babelOptions,
+			// ref: https://github.com/reactjs/react-docgen/issues/760#issuecomment-1454832066
+			filename,
 		});
 	}
 	static props(componentContents: Buffer): Documentation[] {
