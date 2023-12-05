@@ -1,18 +1,26 @@
-import { Documentation, parse } from 'react-docgen';
+import { Documentation, parse as get } from 'react-docgen';
 import fs from 'fs';
 import path from 'path';
 
+const babelOptions = {
+	plugins: ['babel-plugin-styled-components', '@emotion'],
+};
+
 export class Get {
 	static componentSignatures(componentContents: Buffer) {
-		return parse(componentContents, {});
+		return get(componentContents, {
+			babelOptions,
+		});
 	}
 	static props(componentContents: Buffer): Documentation[] {
-		const components = parse(componentContents);
+		const components = get(componentContents, {
+			babelOptions,
+		});
 		return components;
 	}
 
-	static componentName(path: Buffer) {
-		const [component] = parse(path);
+	static componentName(componentContents: Buffer) {
+		const [component] = get(componentContents, { babelOptions });
 
 		return component.displayName;
 	}
