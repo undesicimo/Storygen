@@ -15,11 +15,11 @@ export class Get {
 			filename,
 		});
 	}
-	static props(componentContents: Buffer): Documentation[] {
+	static props(componentContents: Buffer): Documentation['props'] {
 		const components = get(componentContents, {
 			babelOptions,
 		});
-		return components;
+		return components[0].props;
 	}
 
 	static componentName(componentContents: Buffer) {

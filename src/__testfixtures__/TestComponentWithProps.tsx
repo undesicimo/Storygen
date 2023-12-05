@@ -3,6 +3,7 @@ type P = {
 	open: boolean;
 	title: string;
 	description?: string;
+	num: number;
 };
 
 export default function TestComponent(props: P) {

@@ -1,12 +1,14 @@
 import fs from 'fs';
 import { Get } from './get.js';
+import { Documentation } from 'react-docgen';
+import { Is } from './is.js';
+import { faker } from '@faker-js/faker';
+import path from 'path';
 
 type ComponentElements = {
 	componentName: string;
 	componentPath: string;
-	args?: {
-		[key: string]: any;
-	};
+	args?: string;
 };
 
 export class Generate {
@@ -39,17 +41,20 @@ export class Generate {
 
 	static story({
 		contents,
-		storyFileDescriptor: fileDescriptor,
+		storyFileDescriptor,
 	}: {
 		contents: string;
 		storyFileDescriptor: string;
 	}) {
-		fs.writeFile(fileDescriptor, contents, 'utf8', err => {
+		fs.writeFile(storyFileDescriptor, contents, 'utf8', err => {
 			if (err) {
 				console.error(err, 'Error generating storybook file');
 				throw err;
 			}
-			console.log('Storybook file generated!');
+			console.log(
+				'Storybook file generated!✨✨✨' +
+					`\nAccess it here ➡️ ${storyFileDescriptor}`
+			);
 		});
 	}
 
@@ -57,5 +62,36 @@ export class Generate {
 		return `${Get.filePathWithoutFileName(path)}/${
 			Get.fileNameWithoutExtension(path) + '.stories.tsx'
 		}`;
+	}
+
+	static storyPropArgs(componentProps: Documentation['props']) {
+		if (!componentProps) return undefined;
+
+		const requiredProps = Object.entries(componentProps).filter(([, value]) =>
+			Is.propRequired(value)
+		);
+
+		return requiredProps.reduce((acc, [key, value]) => {
+			let prop: string | boolean | void | number = undefined;
+			switch (value?.tsType?.name) {
+				case 'string':
+					prop = `"${faker.lorem.words(2)}"`;
+					break;
+				case 'boolean':
+					prop = `"${faker.datatype.boolean()}"`;
+					break;
+				case 'number':
+					prop = faker.number.int(5);
+					break;
+				case 'void':
+					prop = '() => {}';
+					break;
+				default:
+					prop = undefined;
+					break;
+			}
+
+			return `${acc}${key}: ${prop},`;
+		}, '');
 	}
 }
