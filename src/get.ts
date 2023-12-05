@@ -10,6 +10,7 @@ export class Get {
 	static componentSignatures(componentContents: Buffer, filename?: string) {
 		return get(componentContents, {
 			babelOptions,
+			// NOTE: filename is required to parse typescript files properly
 			// ref: https://github.com/reactjs/react-docgen/issues/760#issuecomment-1454832066
 			filename,
 		});
