@@ -26,7 +26,7 @@ export class Generate {
 			title: '${componentPath}',
 			component: ${componentName},
 			args:{
-				${args}
+				${args ?? '//TODO: Add args here'}
 			}
 		} as Meta<typeof ${componentName}>;
 
