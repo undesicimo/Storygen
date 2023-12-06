@@ -20,7 +20,9 @@ export class Log {
 		if (executeSuccessFiles.length > 0) {
 			console.log(
 				chalk.greenBright(`✅ Success! `) +
-					`Generated Storybook files for\n${executeSuccessFiles.join('\n')}`
+					`Generated the following Storybooks🟪📚\n${executeSuccessFiles.join(
+						'\n'
+					)}`
 			);
 		}
 		if (executeErrorFiles.length > 0) {
