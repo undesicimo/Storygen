@@ -1,5 +1,6 @@
 import { Generate } from './generate.js';
 import { Get } from './get.js';
+import { Log } from './log.js';
 import { Parse } from './parse.js';
 import chalk from 'chalk';
 
@@ -18,18 +19,12 @@ export class Execute {
 			componentPath: `./${Get.fileNameWithoutExtension(filePath)}`,
 			args: Generate.storyPropArgs(componentDocumentation.props),
 		});
-
 		Generate.story({
 			storyFileDescriptor,
 			contents,
 		});
 
-		console.log(
-			chalk.greenBright('▶ Storybook file generated! ') +
-				`✨✨✨` +
-				chalk.yellow(`\n▶ Access it here ➡️ `) +
-				`${storyFileDescriptor}`
-		);
+		Log.success(storyFileDescriptor);
 	}
 
 	static onDirectory(dirPath: string) {
