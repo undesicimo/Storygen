@@ -2,12 +2,13 @@ import { Execute } from './execute.js';
 import { Get } from './get.js';
 import { Is } from './is.js';
 import { Log } from './log.js';
+import { ExecuteErrorDescription } from './types.js';
 
 const [pathArgs] = process.argv.slice(2);
 
 function run() {
 	let executeSuccessFiles: string[] = [];
-	let executeErrorFiles: string[] = [];
+	let executeErrorFiles: ExecuteErrorDescription[] = [];
 
 	if (Is.pathADirPath(pathArgs)) {
 		Get.allFilePathsFromDirPath(pathArgs).forEach(path => {
@@ -15,7 +16,7 @@ function run() {
 				Execute.onFile(path);
 				executeSuccessFiles.push(path);
 			} catch (err) {
-				executeErrorFiles.push(path);
+				executeErrorFiles.push({ filePath: path, error: err as Error });
 			}
 		});
 	} else {
@@ -23,7 +24,7 @@ function run() {
 			Execute.onFile(pathArgs);
 			executeSuccessFiles.push(pathArgs);
 		} catch (err) {
-			executeErrorFiles.push(pathArgs);
+			executeErrorFiles.push({ filePath: pathArgs, error: err as Error });
 		}
 	}
 

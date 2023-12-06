@@ -1,4 +1,5 @@
 import chalk from 'chalk';
+import { ExecuteErrorDescription } from './types.js';
 
 export class Log {
 	static success(storyFileDescriptor: string) {
@@ -14,7 +15,7 @@ export class Log {
 	}
 	static executionResult(
 		executeSuccessFiles: string[],
-		executeErrorFiles: string[]
+		executeErrorFiles: ExecuteErrorDescription[]
 	) {
 		if (executeSuccessFiles.length > 0) {
 			console.log(
@@ -25,9 +26,12 @@ export class Log {
 		if (executeErrorFiles.length > 0) {
 			console.log(
 				chalk.redBright(`❌ Error! `) +
-					`Failed to generate Storybook files for\n${executeSuccessFiles.join(
-						'\n'
-					)}`
+					`Failed to generate Storybook files for\n${executeErrorFiles
+						.map(
+							({ filePath, error }) =>
+								`${filePath} with\n ▶ ${chalk.red(`${error}`)} `
+						)
+						.join('\n')}`
 			);
 		}
 	}
