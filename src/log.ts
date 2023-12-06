@@ -24,6 +24,8 @@ export class Log {
 						'\n'
 					)}`
 			);
+			// ex: ✅ Success! Generated the following Storybooks🟪📚
+			//		 src/components/accordion/BestAccordion.stories.tsx;
 		}
 		if (executeErrorFiles.length > 0) {
 			console.log(
@@ -35,6 +37,9 @@ export class Log {
 						)
 						.join('\n')}`
 			);
+			// ex: ❌ Error! Failed to generate Storybook files for
+			// 		 src/components/accordion/BestAccordion.stories.tsx;
+			//     ▶ Error: No suitable component definition found.
 		}
 	}
 }
