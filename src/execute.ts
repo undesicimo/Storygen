@@ -1,8 +1,8 @@
 import { Generate } from './generate.js';
 import { Get } from './get.js';
+import { Is } from './is.js';
 import { Log } from './log.js';
 import { Parse } from './parse.js';
-import chalk from 'chalk';
 
 export class Execute {
 	static onFile(filePath: string) {
@@ -23,21 +23,5 @@ export class Execute {
 			storyFileDescriptor,
 			contents,
 		});
-	}
-
-	static onDirectory(dirPath: string) {
-		let executeSuccessFiles: string[] = [];
-		let executeErrorFiles: string[] = [];
-
-		Get.allFilePathsFromDirPath(dirPath).forEach(path => {
-			try {
-				Execute.onFile(path);
-				executeSuccessFiles.push(path);
-			} catch (err) {
-				executeErrorFiles.push(path);
-			}
-		});
-
-		Log.executionResult(executeSuccessFiles, executeErrorFiles);
 	}
 }
