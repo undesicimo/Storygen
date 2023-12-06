@@ -23,13 +23,21 @@ export class Execute {
 			storyFileDescriptor,
 			contents,
 		});
-
-		Log.success(storyFileDescriptor);
 	}
 
 	static onDirectory(dirPath: string) {
+		let executeSuccessFiles: string[] = [];
+		let executeErrorFiles: string[] = [];
+
 		Get.allFilePathsFromDirPath(dirPath).forEach(path => {
-			Execute.onFile(path);
+			try {
+				Execute.onFile(path);
+				executeSuccessFiles.push(path);
+			} catch (err) {
+				executeErrorFiles.push(path);
+			}
 		});
+
+		Log.executionResult(executeSuccessFiles, executeErrorFiles);
 	}
 }

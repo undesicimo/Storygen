@@ -9,7 +9,26 @@ export class Log {
 				`${storyFileDescriptor}`
 		);
 	}
-	error(error: Error, filePath: string) {
+	static error(error: Error, filePath: string) {
 		console.error(chalk.red(error) + ` in file ${filePath}`);
+	}
+	static executionResult(
+		executeSuccessFiles: string[],
+		executeErrorFiles: string[]
+	) {
+		if (executeSuccessFiles.length > 0) {
+			console.log(
+				chalk.greenBright(`✅ Success! `) +
+					`Generated Storybook files for\n${executeSuccessFiles.join('\n')}`
+			);
+		}
+		if (executeErrorFiles.length > 0) {
+			console.log(
+				chalk.redBright(`❌ Error! `) +
+					`Failed to generate Storybook files for\n${executeSuccessFiles.join(
+						'\n'
+					)}`
+			);
+		}
 	}
 }
