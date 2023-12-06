@@ -49,10 +49,6 @@ export const Default: Story = {
 				console.error(err, 'Error generating storybook file');
 				throw err;
 			}
-			console.log(
-				'Storybook file generated!✨✨✨' +
-					`\nAccess it here ➡️ ${storyFileDescriptor}`
-			);
 		});
 	}
 
