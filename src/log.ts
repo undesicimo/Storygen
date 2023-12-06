@@ -9,4 +9,7 @@ export class Log {
 				`${storyFileDescriptor}`
 		);
 	}
+	error(error: Error, filePath: string) {
+		console.error(chalk.red(error) + ` in file ${filePath}`);
+	}
 }
