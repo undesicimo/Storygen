@@ -72,7 +72,7 @@ export const Default: Story = {
 					prop = `"${faker.lorem.words(2)}"`;
 					break;
 				case 'boolean':
-					prop = `"${faker.datatype.boolean()}"`;
+					prop = `${faker.datatype.boolean()}`;
 					break;
 				case 'number':
 					prop = faker.number.int(5);
@@ -81,7 +81,7 @@ export const Default: Story = {
 					prop = '() => {}';
 					break;
 				default:
-					prop = undefined;
+					prop = undefined + '//TODO: Implement prop\n';
 					break;
 			}
 
