@@ -1,9 +1,9 @@
-import { Execute } from './execute.js';
-import { Generate } from './generate.js';
-import { Get } from './get.js';
-import { Is } from './is.js';
-import { Log } from './log.js';
-import { ExecuteErrorDescription } from './types.js';
+import { Execute } from './src/execute.js';
+import { Generate } from './src/generate.js';
+import { Get } from './src/get.js';
+import { Is } from './src/is.js';
+import { Log } from './src/log.js';
+import { ExecuteErrorDescription } from './src/types.js';
 
 const [pathArgs] = process.argv.slice(2);
 
