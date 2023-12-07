@@ -14,7 +14,7 @@
 	"scripts": {
 		"gen": "tsc && node dist/index.js",
 		"build": "tsc",
-		"test": "jest --passWithNoTests",
+		"test": "jest",
 		"lint": "eslint --ext .ts src"
 	},
 	"keywords": [
