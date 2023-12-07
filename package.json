@@ -12,7 +12,7 @@
 	"main": "src/index.ts",
 	"type": "module",
 	"scripts": {
-		"start": "tsc && node dist/index.js",
+		"gen": "tsc && node dist/index.js",
 		"build": "tsc",
 		"test": "jest",
 		"lint": "eslint --ext .ts src"
