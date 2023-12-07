@@ -8,8 +8,8 @@ import { ExecuteErrorDescription } from './types.js';
 const [pathArgs] = process.argv.slice(2);
 
 function run() {
-	let executeSuccessFiles: string[] = [];
-	let executeErrorFiles: ExecuteErrorDescription[] = [];
+	const executeSuccessFiles: string[] = [];
+	const executeErrorFiles: ExecuteErrorDescription[] = [];
 
 	if (Is.pathADirPath(pathArgs)) {
 		Get.allFilePathsFromDirPath(pathArgs).forEach(path => {

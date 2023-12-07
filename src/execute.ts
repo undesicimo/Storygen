@@ -1,7 +1,5 @@
 import { Generate } from './generate.js';
 import { Get } from './get.js';
-import { Is } from './is.js';
-import { Log } from './log.js';
 import { Parse } from './parse.js';
 
 export class Execute {

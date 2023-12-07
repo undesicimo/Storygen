@@ -3,7 +3,6 @@ import { Get } from './get.js';
 import { Documentation } from 'react-docgen';
 import { Is } from './is.js';
 import { faker } from '@faker-js/faker';
-import path from 'path';
 
 type ComponentElements = {
 	componentName: string;
