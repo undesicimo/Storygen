@@ -84,7 +84,7 @@ export const Default: Story = {
 					break;
 			}
 
-			return `${acc}${key}: ${prop},`;
+			return `${acc}${key}: ${prop},\n`;
 		}, '');
 	}
 }
