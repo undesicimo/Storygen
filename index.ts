@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { Execute } from './src/execute.js';
 import { Generate } from './src/generate.js';
 import { Get } from './src/get.js';

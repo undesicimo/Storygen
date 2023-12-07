@@ -2,28 +2,21 @@ import { Documentation, parse as get } from 'react-docgen';
 import fs from 'fs';
 import path from 'path';
 
-const babelOptions = {
-	plugins: ['babel-plugin-styled-components', '@emotion'],
-};
-
 export class Get {
 	static componentSignatures(componentContents: Buffer, filename?: string) {
 		return get(componentContents, {
-			babelOptions,
 			// NOTE: filename is required to parse typescript files properly
 			// ref: https://github.com/reactjs/react-docgen/issues/760#issuecomment-1454832066
 			filename,
 		});
 	}
 	static props(componentContents: Buffer): Documentation['props'] {
-		const components = get(componentContents, {
-			babelOptions,
-		});
+		const components = get(componentContents, {});
 		return components[0].props;
 	}
 
 	static componentName(componentContents: Buffer) {
-		const [component] = get(componentContents, { babelOptions });
+		const [component] = get(componentContents, {});
 
 		return component.displayName;
 	}

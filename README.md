@@ -2,9 +2,20 @@
 
 A Program that makes a Storybook template from the given file.
 
-## GIST
+## Gist
 
-```bash
-  $ npm install
-  $ npm run gen path/to/component
+```shell
+  npm install storybook-gen -g
+```
+
+then
+
+```shell
+  storybook-gen path/to/component
+```
+
+or
+
+```shell
+  sgen path/to/component
 ```
