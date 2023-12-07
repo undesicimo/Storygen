@@ -1,6 +1,6 @@
 # Storygen
 
-A Program that makes a Storybook template from the given file.
+A Program that makes a Storybook template from the given file (with props!).
 
 ## Gist
 
