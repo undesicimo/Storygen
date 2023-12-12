@@ -3,7 +3,7 @@ import { Get } from './get.js';
 import { Parse } from './parse.js';
 
 export class Execute {
-	static onFile(filePath: string) {
+	static on(filePath: string) {
 		const [componentDocumentation] = Get.componentSignatures(
 			Parse.reactComponent(filePath),
 			Get.fileName(filePath)

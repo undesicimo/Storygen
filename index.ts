@@ -16,7 +16,7 @@ function run() {
 	if (Is.pathADirPath(pathArgs)) {
 		Get.allFilePathsFromDirPath(pathArgs).forEach(path => {
 			try {
-				Execute.onFile(path);
+				Execute.on(path);
 				executeSuccessFiles.push(Generate.storyFileDescriptorFromPath(path));
 			} catch (err) {
 				executeErrorFiles.push({ filePath: path, error: err as Error });
@@ -24,7 +24,7 @@ function run() {
 		});
 	} else {
 		try {
-			Execute.onFile(pathArgs);
+			Execute.on(pathArgs);
 			executeSuccessFiles.push(Generate.storyFileDescriptorFromPath(pathArgs));
 		} catch (err) {
 			executeErrorFiles.push({ filePath: pathArgs, error: err as Error });
