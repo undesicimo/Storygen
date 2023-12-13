@@ -7,16 +7,14 @@ import { ExecuteErrorDescription } from './types.js';
 
 export type ExecutionOptions = {
 	relativeTitle: boolean;
-	toUseCustomBabelConfig: boolean;
 };
 
 export class Execute {
 	static on(filePath: string, options: ExecutionOptions) {
-		const [componentDocumentation] = Get.componentSignatures({
-			componentContents: Parse.reactComponent(filePath),
-			filename: Get.fileName(filePath),
-			options,
-		});
+		const [componentDocumentation] = Get.componentSignatures(
+			Parse.reactComponent(filePath),
+			Get.fileName(filePath)
+		);
 
 		const storyFileDescriptor = Generate.storyFileDescriptorFromPath(filePath);
 		const contents = Generate.storybookTemplate({

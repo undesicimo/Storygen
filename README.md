@@ -14,10 +14,6 @@ path of the file component or directory to generate the storybook file(s)
 
 generate storybook title to be relative to the current working directory. Good for organizing stories based on the directory structure
 
-`-cb, --useCustomBabelConfig`
-
-use custom babel config from working directory (default: false)
-
 ## Gist
 
 ```shell
