@@ -18,6 +18,11 @@ program
 		`generate storybook title to be relative to the current working directory. Good for organizing stories based on the directory structure`,
 		false
 	)
+	.option(
+		'-cb, --useCustomBabelConfig',
+		'use custom babel config from working directory',
+		false
+	)
 	.action((path, options) => {
 		Execute.program(path, options);
 	});

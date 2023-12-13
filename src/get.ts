@@ -1,13 +1,25 @@
 import { Documentation, parse as get } from 'react-docgen';
 import fs from 'fs';
 import path from 'path';
+import { ExecutionOptions } from './execute.js';
 
 export class Get {
-	static componentSignatures(componentContents: Buffer, filename?: string) {
+	static componentSignatures({
+		componentContents,
+		options,
+		filename,
+	}: {
+		componentContents: Buffer;
+		filename?: string;
+		options: ExecutionOptions;
+	}) {
 		return get(componentContents, {
 			// NOTE: filename is required to parse typescript files properly
 			// ref: https://github.com/reactjs/react-docgen/issues/760#issuecomment-1454832066
 			filename,
+			babelOptions: {
+				babelrc: options.toUseCustomBabelConfig,
+			},
 		});
 	}
 	static props(componentContents: Buffer): Documentation['props'] {
