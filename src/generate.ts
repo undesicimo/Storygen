@@ -51,6 +51,10 @@ export const Default: Story = {
 		});
 	}
 
+	static relativeToCWDStoryTitle() {
+		return Get.relativePath(process.cwd(), process.argv[2]);
+	}
+
 	static storyFileDescriptorFromPath(path: string) {
 		return `${Get.filePathWithoutFileName(path)}/${
 			Get.fileNameWithoutExtension(path) + '.stories.tsx'

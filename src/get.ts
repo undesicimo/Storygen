@@ -48,7 +48,7 @@ export class Get {
 		return path.dirname(filePath);
 	}
 
-	relativePath(from: string, to: string) {
+	static relativePath(from: string, to: string) {
 		return path.relative(from, to);
 	}
 }
