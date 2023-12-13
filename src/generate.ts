@@ -7,11 +7,13 @@ import { faker } from '@faker-js/faker';
 type ComponentElements = {
 	componentName: string;
 	componentPath: string;
+	componentTitle: string;
 	args?: string;
 };
 
 export class Generate {
 	static storybookTemplate({
+		componentTitle,
 		componentName,
 		componentPath,
 		args,
@@ -21,7 +23,7 @@ export class Generate {
 import ${componentName} from '${componentPath}';
 
 export default {
-  title: '${componentPath}',
+  title: '${componentTitle}',
   component: ${componentName},
   args: {
     ${args ?? '//TODO: Add args here'}
