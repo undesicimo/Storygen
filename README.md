@@ -4,7 +4,8 @@ A Program that makes a Storybook template from the given file (with props!).
 
 > [!NOTE]
 > Currently only supports React components
-> parsing for other framework components are welcome!
+> 
+> Generation support for other frameworks are welcome!
 
 ## Arguments
 
