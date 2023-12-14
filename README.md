@@ -5,7 +5,7 @@ A Program that makes a Storybook template from the given file (with props!).
 > [!NOTE]
 > Currently only supports React components
 > 
-> Generation support for other frameworks are welcome!
+> PRs for generation support for other frameworks are welcome!
 
 ## Arguments
 
