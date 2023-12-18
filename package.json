@@ -21,8 +21,9 @@
 	"scripts": {
 		"gen": "tsc && node dist/index.js",
 		"build": "tsc",
-		"test": "vitest",
-		"test:ui":"vitest --ui",
+		"test": "vitest --watch=false",
+		"test:coverage": "vitest --coverage",
+		"test:ui": "vitest --ui",
 		"lint": "eslint --ext .ts src",
 		"prepublishOnly": "npm run build"
 	},
@@ -43,6 +44,7 @@
 	"devDependencies": {
 		"@typescript-eslint/eslint-plugin": "^6.13.2",
 		"@typescript-eslint/parser": "^6.13.2",
+		"@vitest/coverage-v8": "^1.0.4",
 		"@vitest/ui": "^1.0.4",
 		"eslint": "^8.55.0",
 		"ts-jest": "^29.1.1",
