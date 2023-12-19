@@ -6,6 +6,8 @@ export default defineConfig({
 			provider: 'v8',
 			enabled: true,
 			reporter: ['html'],
+			exclude: ['src/types.ts'],
 		},
+		clearMocks: true,
 	},
 });
