@@ -1,13 +1,13 @@
 import { describe, expect, it, vi } from 'vitest';
-import { Get } from './get.js';
-import { Generate } from './generate.js';
+import { Get } from '../get.js';
+import { Generate } from '../generate.js';
 import { Execute } from '../execute.js';
-import { Log } from './log.js';
+import { Log } from '../log.js';
 import {
 	DUMMY_DIR_PATH,
 	DUMMY_FILE_PATH,
 	NON_COMPONENT_FILE_PATH,
-} from './__tests__/const.js';
+} from '../__tests__/const.js';
 
 // Get mocks
 const mockGetComponentSignatures = vi.spyOn(Get, 'componentSignatures');
