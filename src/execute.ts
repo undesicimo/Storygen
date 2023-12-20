@@ -14,7 +14,7 @@ export class Execute {
 		const [componentDocumentation] = Get.componentSignatures(
 			Parse.reactComponent(filePath),
 			Get.fileName(filePath)
-		);
+		);	
 
 		const storyFileDescriptor = Generate.storyFileDescriptorFromPath(filePath);
 		const contents = Generate.storybookTemplate({
