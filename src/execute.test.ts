@@ -3,6 +3,11 @@ import { Get } from './get.js';
 import { Generate } from './generate.js';
 import { Execute } from './execute.js';
 import { Log } from './log.js';
+import {
+	DUMMY_DIR_PATH,
+	DUMMY_FILE_PATH,
+	NON_COMPONENT_FILE_PATH,
+} from './__tests__/const.js';
 
 // Get mocks
 const mockGetComponentSignatures = vi.spyOn(Get, 'componentSignatures');
@@ -20,11 +25,8 @@ const mockLogExecutionResult = vi.spyOn(Log, 'executionResult');
 describe('Execute', () => {
 	describe('on', () => {
 		it('should call core functionality', () => {
-			// Arrange
-			const dummyFilePath =
-				'src/__testfixtures__/TestComponentWithoutProps.tsx';
 			// Act
-			Execute.on(dummyFilePath, {
+			Execute.on(DUMMY_FILE_PATH, {
 				relativeTitle: false,
 			});
 			// Assert
@@ -40,15 +42,14 @@ describe('Execute', () => {
 			// Arrange
 			const mockExecuteOn = vi.spyOn(Execute, 'on');
 			const targetFileName = 'TestComponentWithoutProps';
-			const dummyFilePath = 'src/__testfixtures__';
 			// Act
-			Execute.program(`${dummyFilePath}/${targetFileName}.tsx`, {
+			Execute.program(`${DUMMY_DIR_PATH}/${targetFileName}.tsx`, {
 				relativeTitle: false,
 			});
 			// Assert
 			expect(mockExecuteOn).toHaveBeenCalledTimes(1);
 			expect(mockLogExecutionResult).toHaveBeenCalledWith(
-				[`${dummyFilePath}/${targetFileName}.stories.tsx`],
+				[`${DUMMY_DIR_PATH}/${targetFileName}.stories.tsx`],
 				[]
 			);
 		});
@@ -57,9 +58,8 @@ describe('Execute', () => {
 		it.fails('should run multiple times when path is a dirpath', () => {
 			// Arrange
 			const mockExecuteOn = vi.spyOn(Execute, 'on');
-			const dummyDirPath = 'src/__testfixtures__';
 			// Act
-			Execute.program(dummyDirPath, {
+			Execute.program(DUMMY_DIR_PATH, {
 				relativeTitle: false,
 			});
 			// Assert
@@ -75,9 +75,8 @@ describe('Execute', () => {
 
 		it('should throw error when target file is not a react component', () => {
 			// Arrange
-			const nonComponentFilePath = 'src/execute.ts';
 			// Act
-			Execute.program(nonComponentFilePath, {
+			Execute.program(NON_COMPONENT_FILE_PATH, {
 				relativeTitle: false,
 			});
 			// Assert
@@ -85,7 +84,7 @@ describe('Execute', () => {
 				[],
 				[
 					{
-						filePath: nonComponentFilePath,
+						filePath: NON_COMPONENT_FILE_PATH,
 						error: new Error('No suitable component definition found.'),
 					},
 				]
