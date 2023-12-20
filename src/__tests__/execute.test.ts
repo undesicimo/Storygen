@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import { Get } from './get.js';
 import { Generate } from './generate.js';
-import { Execute } from './execute.js';
+import { Execute } from '../execute.js';
 import { Log } from './log.js';
 import {
 	DUMMY_DIR_PATH,
