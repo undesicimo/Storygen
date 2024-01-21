@@ -5,7 +5,7 @@ A Program that makes a Storybook template from the given file (with props!).
 > [!NOTE]
 > Currently only supports React components
 > 
-> PRs for generation support for other frameworks are welcome!
+> PRs for support of other frameworks are welcome!
 
 ## Arguments
 
@@ -36,3 +36,28 @@ or
 ```shell
   sgen path/to/component
 ```
+
+### Output
+
+```ts
+import {StoryObj, Meta} from '@storybook/react';
+
+import {{componentName}} from '${componentPath}';
+
+export default {
+  title: {{componentTitle}},
+  component: {{componentName}},
+  args: {
+     //if required props exist
+  },
+} as Meta<typeof {{componentName}}>;
+
+type Story = StoryObj<typeof {{componentName}}>;
+
+export const Default: Story = {
+  args: {},
+};
+
+```
+
+This template is a good building block to create your stories.
