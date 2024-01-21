@@ -40,6 +40,8 @@ or
 ### Output
 
 ```ts
+// ComponentName.stories.tsx
+
 import {StoryObj, Meta} from '@storybook/react';
 
 import {{componentName}} from '${componentPath}';
@@ -60,4 +62,4 @@ export const Default: Story = {
 
 ```
 
-This template is a good building block to create your stories.
+Start generating these templates for all of your components and build storybooks from there!
