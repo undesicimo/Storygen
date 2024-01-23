@@ -14,7 +14,7 @@
 		}
 	],
 	"repository": "https://github.com/undesicimo/Storygen/",
-	"version": "1.5.1",
+	"version": "1.5.2",
 	"description": "Generate Storybooks for your React components",
 	"main": "./index.js",
 	"type": "module",
