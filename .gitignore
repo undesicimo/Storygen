@@ -4,3 +4,5 @@ dist
 src/__testfixtures__/**.stories.tsx
 src/__testfixtures__/**.story.tsx
 coverage
+.vscode
+
