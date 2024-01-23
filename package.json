@@ -23,6 +23,7 @@
 		"build": "tsc",
 		"test": "vitest --watch=false",
 		"test:coverage": "vitest --coverage",
+		"compile": "tsc",
 		"test:ui": "vitest --ui",
 		"lint": "eslint --ext .ts src",
 		"prepublishOnly": "npm run build"
