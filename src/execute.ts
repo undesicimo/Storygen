@@ -14,7 +14,7 @@ export class Execute {
 		const [componentDocumentation] = Get.componentSignatures(
 			Parse.reactComponent(filePath),
 			Get.fileName(filePath)
-		);	
+		);
 
 		const storyFileDescriptor = Generate.storyFileDescriptorFromPath(filePath);
 		const contents = Generate.storybookTemplate({
@@ -39,6 +39,9 @@ export class Execute {
 
 		if (Is.pathADirPath(pathArgs)) {
 			Get.allFilePathsFromDirPath(pathArgs).forEach(path => {
+				if (Is.storybookFile(path)) {
+					return;
+				}
 				try {
 					Execute.on(path, options);
 					executeSuccessFiles.push(Generate.storyFileDescriptorFromPath(path));
@@ -48,6 +51,9 @@ export class Execute {
 			});
 		} else {
 			try {
+				if (Is.storybookFile(pathArgs)) {
+					return;
+				}
 				Execute.on(pathArgs, options);
 				executeSuccessFiles.push(
 					Generate.storyFileDescriptorFromPath(pathArgs)
