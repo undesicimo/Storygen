@@ -6,7 +6,12 @@ export class Is {
 		return fs.statSync(path).isDirectory();
 	}
 
-	static propRequired(prop: PropDescriptor){
+	static propRequired(prop: PropDescriptor) {
 		return prop.required;
+	}
+
+	static storybookFile(filePath: string) {
+		const storiesFileRegex = new RegExp(/\.stories\.(js|jsx|ts|tsx)$/);
+		return storiesFileRegex.test(filePath);
 	}
 }

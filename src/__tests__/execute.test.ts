@@ -54,8 +54,7 @@ describe('Execute', () => {
 			);
 		});
 
-		// TODO: should skip story files by default
-		it.fails('should run multiple times when path is a dirpath', () => {
+		it('should run multiple times when path is a dirpath', () => {
 			// Arrange
 			const mockExecuteOn = vi.spyOn(Execute, 'on');
 			// Act
